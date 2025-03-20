@@ -49,12 +49,15 @@ app.get("/", (req, res) => {
 app.use("/about",(req,res)=>{
   res.send("this is about page");
 })
+
 app.use("/api/auth", AuthRouter);
 app.use("/api/products", verifyUser, routerProduct); 
 app.use("/api/admin", verifyAdmin, adminRoutes); 
 app.use("/api/user", verifyUser, userRoutes); 
 
 
-app.listen(4000, () => {
-  console.log("Server is running on port 4000");
-});
+// app.listen(4000, () => {
+//   console.log("Server is running on port 4000");
+// });
+
+module.exports = app;
