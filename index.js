@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 app.use(
   cors({
-    origin: ["http://localhost:5174","http://localhost:5173"], 
+    origin: ["http://localhost:5174","http://localhost:5173","https://e-commerce-frontend-git-main-simrans-projects-dee52ad7.vercel.app/"], 
     credentials: true, 
     methods: ["GET", "POST", "PUT", "DELETE"],  
   })
@@ -46,7 +46,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to the Home route" });
 });
 
-
+app.use("/about",(req,res)=>{
+  res.send("this is about page");
+})
 app.use("/api/auth", AuthRouter);
 app.use("/api/products", verifyUser, routerProduct); 
 app.use("/api/admin", verifyAdmin, adminRoutes); 
